@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: ai-planet-demo
-        image: lulad7/ai-planet-demo:1.2
+        image: lulad7/ai-planet-demo:1.3
         resources:
           limits:
             memory: "128Mi"
