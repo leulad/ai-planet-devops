@@ -5,7 +5,7 @@ metadata:
   namespace: ai-planet-demo
 spec:
   selector:
-    app: ai-planet-demo
+    app: ai-planet-demo-rollout
   type: NodePort
   ports:
   - port: 3000

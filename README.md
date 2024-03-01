@@ -49,6 +49,7 @@ Task 3: Implementing a Canary Release with Argo Rollouts
     
     3.1 Define a rollout strategy
         Modified deployment.yaml
+            First Rollout
             changed from Deployment type to Rollout
             added canary strategy to deployment file with 1 minute interval between each step
                 strategy:
@@ -64,11 +65,25 @@ Task 3: Implementing a Canary Release with Argo Rollouts
             Push to repository to main branch and trigger github actions 
             At the same time Wait for argocd to detect the change in manifest files and redeploy the rollout
 
+            Run command to inspect rollout
+            kubectl argo rollouts get rollout ai-planet-demo-rollout -n ai-planet-demo --watch
+            Rollout successfully deployed for first time without waiting or approval from operator
+    3.2 Trigger a rollout
+            Second Rollout
+            Make modification to we app change to AI Planet Version 2
+            Change Github actions file to build image version ai-planet-demo:1.3
+
+            Modify Rollout Deployment file to use image version ai-planet-demo:1.3
+            Push repository to main branch and trigger github actions automatically 
+            At the same time Wait for argocd to detect the change in manifest files and deploy revision2 of the rollout automatically
+
             First only set to 20% trafic and waits for operator approval
             Approve and promote the rollout 
-            kubectl argo rollouts promote rollouts-demo
+            kubectl argo rollouts promote ai-planet-demo-rollout -n ai-planet-demo 
+            then:
             40% -> 1 minute pause -> 60% -> 1 minute pause -> 100% rollout
-
+    3.3 Monitor the Rollout
+        
 
 
 Task 4:
