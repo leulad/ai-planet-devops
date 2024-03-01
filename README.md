@@ -100,16 +100,18 @@ Run command: \
 - Beautify Readme.md file
 ### 4.2 Clean Up
 - Delete the application and project from ArgoCD
-- Run command to uninstall argo rollouts and delete namespace
+- Run command to uninstall argo rollouts and delete namespace \
     `kubectl delete -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml` \
     `kubectl delete ns argo-rollouts`
 - Run command to uninstall argo rollout plugin
-    `brew uninstall 
-- Run command to uninstall ArgoCD and delete namespace
+    `brew uninstall argoproj/tap/kubectl-argo-rollouts`
+- Run command to uninstall ArgoCD and delete namespace \
     `kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml` \
     `kubectl delete ns argocd`
-- Run command to delete minikube cluster profile
-    `minikube delete argoproj/tap/kubectl-argo-rollouts`
+- Run command to delete ai-planet-demo namespace \
+    `kubectl delete ns ai-planet-demo`
+- Run command to delete minikube cluster profile \
+    `minikube delete`
 - Follow recommended procedures to disable Github Actions and Delete repository if required
 
 
