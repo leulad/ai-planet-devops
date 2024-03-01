@@ -1,12 +1,25 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
-  name: ai-planet-demo
+  name: ai-planet-demo-rollout
   namespace: ai-planet-demo
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: ai-planet-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause: {duration: 1}
+      - setWeight: 60
+      - pause: {duration: 1}
+      - setWeight: 100
+      - pause: {duration: 1}
+  revisionHistoryLimit: 2
   template:
     metadata:
       labels:

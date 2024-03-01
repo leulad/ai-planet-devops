@@ -39,10 +39,36 @@ Task 2: Creating the GitOps Pipeline
     Created a project on argocd named ai-planet-demo
         Added https://github.com/leulad/ai-planet-devops.git as a scoped repository inside the project
     Created and connected the Repository 
-    
-
+    Added the application ai-planet-demo to the project ai-planet-demo
+    Challenge: Unable to run amd64 version on mac m2 requiring arm64 image,
+        Fix:- added platform: arm64 to github actions main.yml file on build and push docker image step
+    application ai-planet-demo with image version ai-planet-demo:1.0.2 running succesfully 
+        AI Planet version 1
 
 Task 3: Implementing a Canary Release with Argo Rollouts
+    
+    3.1 Define a rollout strategy
+        Modified deployment.yaml
+            changed from Deployment type to Rollout
+            added canary strategy to deployment file with 1 minute interval between each step
+                strategy:
+                  canary:
+                  steps:
+                  - setWeight: 20
+                  - pause: {}
+                  - setWeight: 40
+                  - pause: {duration: 1}
+                  - setWeight: 60
+                  - pause: {duration: 1}
+            Using exisiting version for first deployment ai-planet-demo:1.2
+            Push to repository to main branch and trigger github actions 
+            At the same time Wait for argocd to detect the change in manifest files and redeploy the rollout
+
+            First only set to 20% trafic and waits for operator approval
+            Approve and promote the rollout 
+            kubectl argo rollouts promote rollouts-demo
+            40% -> 1 minute pause -> 60% -> 1 minute pause -> 100% rollout
+
 
 
 Task 4:
