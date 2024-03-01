@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-planet-demo
+  namespace: ai-planet-demo
+spec:
+  selector:
+    matchLabels:
+      app: ai-planet-demo
+  template:
+    metadata:
+      labels:
+        app: ai-planet-demo
+    spec:
+      containers:
+      - name: ai-planet-demo
+        image: lulad7/ai-planet-demo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
