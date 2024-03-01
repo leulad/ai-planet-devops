@@ -23,7 +23,7 @@ Task 1: Setup and Configuration
 
 Task 2: Creating the GitOps Pipeline
     2.1 Dockerize the application
-
+        Created sample node js webapp v1
     2.2 Deploy the application using ArgoCD
 
 Task 3: Implementing a Canary Release with Argo Rollouts
