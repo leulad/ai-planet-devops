@@ -81,6 +81,7 @@ Created Repository: https://github.com/leulad/ai-planet-devops
 - Change Github actions file to build image version ai-planet-demo:1.3
 - Modify Rollout Deployment file to use image version ai-planet-demo:1.3
 - Push repository to main branch and trigger github actions automatically 
+![alt text](./images-for-readme/action-final.png)
 - At the same time Wait for argocd to detect the change in manifest files and deploy revision2 of the rollout automatically
 ![alt text](./images-for-readme/3.2argo-ai-middle.png)
 ### 3.3 Monitor the Rollout
