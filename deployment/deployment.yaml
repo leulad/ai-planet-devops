@@ -4,7 +4,6 @@ metadata:
   name: ai-planet-demo-rollout
   namespace: ai-planet-demo
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: ai-planet-demo-rollout
