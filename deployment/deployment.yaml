@@ -28,6 +28,9 @@ spec:
       - name: ai-planet-demo-rollout
         image: lulad7/ai-planet-demo:1.4
         resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
           limits:
             memory: "256Mi"
             cpu: "500m"
